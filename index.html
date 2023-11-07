@@ -2,6 +2,30 @@
 <html>
   <head lang="en">
     <meta charset="utf-8" />
-    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./index.js" defer></script>
   </head>
+  <body class="page">
+    <h1 class="heading">Rock Paper Scissors</h1>
+    <div class="display page__display">
+      <div class="player display__player">
+        <h2 class="player__heading">Player</h2>
+        <div class="score player__score">0</div>
+        <div class="selection player__selection"></div>
+      </div>
+      <div class="computer display__computer">
+        <h2 class="computer__heading">Computer</h2>
+        <div class="score computer__score">0</div>
+        <div class="selection computer__selection"></div>
+      </div>
+      <div class="announcement display__announcement">
+        <div class="announcement__text"></div>
+      </div>
+    </div>
+    <div class="buttons page__buttons">
+      <button class="button buttons__button">Rock</button>
+      <button class="button buttons__button">Paper</button
+      ><button class="button buttons__button">Scissors</button>
+    </div>
+  </body>
 </html>

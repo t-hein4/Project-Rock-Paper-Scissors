@@ -6,7 +6,7 @@
     return CHOICES[ranNum];
   }
 
-  function getPlayerSelection() {
+  function getPlayerSelection(e) {
     let input = null;
     do {
       input = prompt("Pick one").toLowerCase();
@@ -45,22 +45,26 @@
         }
     }
   }
+  const playerSelectionEl = document.querySelector(".player__selection");
+  const computerSelectionEl = document.querySelector(".computer__selection");
+  const playerScoreEl = document.querySelector(".player__score");
+  const computerScoreEl = document.querySelector(".computer__score");
+  const announcementTextEl = document.querySelector(".announcement__text");
+  const buttons = document.querySelectorAll(".button");
+  let playerScores = 0;
+  let computerScores = 0;
 
-  function game() {
-    let playerScores = 0;
-    let computerScores = 0;
-    for (let i = 0; i < 5; i++) {
-      const playerSelection = getPlayerSelection();
-      const computerSelection = getComputerSelection();
-      const result = playRound(playerSelection, computerSelection);
-      switch (result) {
-        case "Win":
-          playerScores += 1;
-          break;
-        case "Lose":
-          computerScores += 1;
-          break;
-      }
+  function game(playerSelection, computerSelection) {
+    const result = playRound(playerSelection, computerSelection);
+    switch (result) {
+      case "Win":
+        playerScores += 1;
+        playerScoreEl.textContent = playerScores;
+        break;
+      case "Lose":
+        computerScores += 1;
+        computerScoreEl.textContent = computerScores;
+        break;
     }
 
     switch (true) {
@@ -73,6 +77,23 @@
     }
   }
 
-  const result = game();
-  console.log(result);
+  function handleClick(event) {
+    const textContent = event.target.textContent;
+    playerSelectionEl.textContent = textContent;
+    const computerSelection = getComputerSelection();
+    computerSelectionEl.textContent =
+      computerSelection[0].toUpperCase() + computerSelection.slice(1);
+    game(textContent.toLowerCase(), computerSelection);
+    if (playerScores == 5) {
+      announcementTextEl.textContent = "You win.";
+    } else if (computerScores == 5) {
+      announcementTextEl.textContent = "You lose.";
+    }
+    if (playerScores == 5 || computerScores == 5) {
+      buttons.forEach((button) =>
+        button.removeEventListener("click", handleClick)
+      );
+    }
+  }
+  buttons.forEach((button) => button.addEventListener("click", handleClick));
 })();

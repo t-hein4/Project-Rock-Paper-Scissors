@@ -1,0 +1,112 @@
+html {
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  font-family: inherit;
+}
+
+.page {
+  margin: 0;
+}
+
+.heading {
+  text-align: center;
+  background-color: grey;
+  padding: 32px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.page__display {
+  margin: 40px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.player,
+.computer {
+  border: 1px solid black;
+  padding: 16px;
+}
+
+.display__player,
+.display__computer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 64px;
+}
+
+.selection {
+  width: 240px;
+  height: 160px;
+  background-color: gray;
+  border-radius: 8px;
+  font-size: 40px;
+}
+
+.player__selection,
+.computer__selection {
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  padding: 32px;
+  border: 2px solid black;
+  border-left: none;
+  border-right: none;
+}
+
+.page__buttons {
+  display: flex;
+  gap: 32px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.button {
+  border-radius: 8px;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 16px 64px;
+  font-weight: 900;
+  background-color: grey;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(155, 155, 155);
+  transition: all 300ms ease-in-out;
+}
+
+.buttons__button {
+  flex: 1 1 30%;
+}
+
+.announcement__text {
+  text-transform: uppercase;
+  font-size: 64px;
+}
+
+.display__announcement {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: grey;
+  min-height: 80px;
+  margin: 32px 0;
+}
+
+.score {
+  font-size: 32px;
+}
